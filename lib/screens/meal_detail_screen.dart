@@ -9,7 +9,8 @@ class MealDetailScreen extends StatelessWidget {
 
   Widget buildSectionTitle(String text, BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10),
+      margin: EdgeInsets.symmetric(
+          vertical: MediaQuery.of(context).size.height * 0.01),
       child: Text(
         text,
         style: TextStyle(
@@ -20,16 +21,16 @@ class MealDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget buildContainer(Widget child) {
+  Widget buildContainer(Widget child, BuildContext context) {
     return Container(
       decoration: BoxDecoration(
           color: Colors.amber,
           // color: const Color.fromARGB(255, 68, 68, 68),
           border: Border.all(color: const Color.fromARGB(255, 0, 0, 0)),
           borderRadius: BorderRadius.circular(10)),
-      padding: const EdgeInsets.all(8),
-      height: 200,
-      width: 380,
+      padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.01),
+      height: MediaQuery.of(context).size.height * 0.3,
+      width: MediaQuery.of(context).size.width * 0.95,
       child: child,
     );
   }
@@ -52,7 +53,7 @@ class MealDetailScreen extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: 300,
+              height: MediaQuery.of(context).size.height * 0.3,
               width: double.infinity,
               child: Image.network(
                 selectedMeal.imageUrl,
@@ -61,52 +62,55 @@ class MealDetailScreen extends StatelessWidget {
             ),
             buildSectionTitle('Ingredients', context),
             buildContainer(
-              ListView.builder(
-                itemCount: selectedMeal.ingredients.length,
-                itemBuilder: (ctx, index) => Card(
-                  color: Theme.of(context).colorScheme.primary,
-                  shadowColor: Colors.black,
-                  elevation: 5,
-                  surfaceTintColor: Colors.black,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 5,
-                      horizontal: 10,
-                    ),
-                    child: Text(
-                      selectedMeal.ingredients[index],
-                      style: Theme.of(context).textTheme.titleMedium,
+                ListView.builder(
+                  itemCount: selectedMeal.ingredients.length,
+                  itemBuilder: (ctx, index) => Card(
+                    color: Theme.of(context).colorScheme.primary,
+                    shadowColor: Colors.black,
+                    elevation: 5,
+                    surfaceTintColor: Colors.black,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: MediaQuery.of(context).size.height * 0.01,
+                        horizontal: MediaQuery.of(context).size.width * 0.01,
+                      ),
+                      child: Text(
+                        selectedMeal.ingredients[index],
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ),
+                context),
             buildSectionTitle('Steps', context),
-            buildContainer(ListView.builder(
-              itemBuilder: (context, index) => Column(
-                children: [
-                  ListTile(
-                    leading: CircleAvatar(
-                      backgroundColor: Theme.of(context).colorScheme.secondary,
-                      child: Text(
-                        '# ${index + 1}',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          color: Theme.of(context).colorScheme.primary,
+            buildContainer(
+                ListView.builder(
+                  itemBuilder: (context, index) => Column(
+                    children: [
+                      ListTile(
+                        leading: CircleAvatar(
+                          backgroundColor:
+                              Theme.of(context).colorScheme.secondary,
+                          child: Text(
+                            '# ${index + 1}',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                          ),
                         ),
+                        title: Text(selectedMeal.steps[index],
+                            style: Theme.of(context).textTheme.titleMedium),
                       ),
-                    ),
-                    title: Text(selectedMeal.steps[index],
-                        style: Theme.of(context).textTheme.titleMedium),
+                      const Divider(
+                        thickness: 1,
+                        color: Color.fromARGB(255, 84, 0, 0),
+                      ),
+                    ],
                   ),
-                  const Divider(
-                    thickness: 1,
-                    color: Color.fromARGB(255, 84, 0, 0),
-                  ),
-                ],
-              ),
-              itemCount: selectedMeal.steps.length,
-            ))
+                  itemCount: selectedMeal.steps.length,
+                ),
+                context)
           ],
         ),
       ),

@@ -21,7 +21,7 @@ class CategoryItem extends StatelessWidget {
       splashColor: Theme.of(context).colorScheme.secondary,
       borderRadius: BorderRadius.circular(15),
       child: Container(
-        padding: const EdgeInsets.all(20),
+        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
         decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
               color.withOpacity(0.6),

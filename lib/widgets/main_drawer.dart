@@ -31,13 +31,14 @@ class MainDrawer extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            height: 100,
+            height: MediaQuery.of(context).size.height * 0.15,
             width: double.infinity,
             color: Theme.of(context).colorScheme.primary,
             padding: const EdgeInsets.all(20),
             alignment: Alignment.centerLeft,
             child: Container(
-              margin: const EdgeInsets.only(top: 20, left: 50),
+              margin: MediaQuery.of(context)
+                  .padding, // const EdgeInsets.only(top: 20, left: 50),
               child: Text(
                 'Cooking Up',
                 style: TextStyle(
@@ -48,12 +49,15 @@ class MainDrawer extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
-            height: 20,
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.02,
           ),
           buildListTile('Meals', Icons.restaurant, () {
             Navigator.of(context).pushReplacementNamed('/');
           }, context),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.01,
+          ),
           buildListTile('Filters', Icons.settings, () {
             Navigator.of(context).pushReplacementNamed(FiltersScreen.routeName);
           }, context),

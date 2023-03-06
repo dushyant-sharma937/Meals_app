@@ -64,7 +64,9 @@ class MealItem extends StatelessWidget {
         color: Colors.amber,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         elevation: 4,
-        margin: const EdgeInsets.all(10),
+        margin: EdgeInsets.symmetric(
+            vertical: MediaQuery.of(context).size.height * 0.0015,
+            horizontal: MediaQuery.of(context).size.width * 0.01),
         child: Column(
           children: <Widget>[
             Stack(
@@ -75,7 +77,7 @@ class MealItem extends StatelessWidget {
                         topRight: Radius.circular(15)),
                     child: Image.network(
                       imageurl,
-                      height: 250,
+                      height: MediaQuery.of(context).size.height * 0.35,
                       width: double.infinity,
                       fit: BoxFit.cover,
                     )),
@@ -107,11 +109,13 @@ class MealItem extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.all(10),
+              padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.01),
               child: Column(
                 children: [
                   Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 10),
+                      margin: EdgeInsets.symmetric(
+                          horizontal: MediaQuery.of(context).size.width * 0.1),
                       child: Text(
                         title,
                         style: TextStyle(
@@ -124,35 +128,63 @@ class MealItem extends StatelessWidget {
                   // ),
                   Divider(
                     color: Theme.of(context).colorScheme.secondary,
-                    height: 30,
+                    height: MediaQuery.of(context).size.height * 0.03,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Row(
-                        children: [
-                          const Icon(Icons.schedule),
-                          const SizedBox(width: 6),
-                          Text('$duration min',
-                              style: Theme.of(context).textTheme.titleMedium),
-                        ],
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal:
+                                MediaQuery.of(context).size.width * 0.03),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal:
+                                      MediaQuery.of(context).size.width * 0.01),
+                              child: const Icon(Icons.schedule),
+                            ),
+                            Text('$duration min',
+                                style: Theme.of(context).textTheme.titleMedium),
+                          ],
+                        ),
                       ),
-                      Row(
-                        children: [
-                          const Icon(Icons.work),
-                          const SizedBox(width: 6),
-                          Text(complexityText,
-                              style: Theme.of(context).textTheme.titleMedium),
-                        ],
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal:
+                                MediaQuery.of(context).size.width * 0.03),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal:
+                                      MediaQuery.of(context).size.width * 0.01),
+                              child: const Icon(Icons.work),
+                            ),
+                            Text(complexityText,
+                                style: Theme.of(context).textTheme.titleMedium),
+                          ],
+                        ),
                       ),
-                      Row(
-                        children: [
-                          const Icon(Icons.attach_money_rounded),
-                          const SizedBox(width: 6),
-                          Text(affordabilityText,
-                              style: Theme.of(context).textTheme.titleMedium),
-                        ],
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal:
+                                MediaQuery.of(context).size.width * 0.03),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal:
+                                      MediaQuery.of(context).size.width *
+                                          0.003),
+                              child: const Icon(Icons.attach_money_rounded),
+                            ),
+                            Text(affordabilityText,
+                                style: Theme.of(context).textTheme.titleMedium),
+                          ],
+                        ),
                       ),
                     ],
                   ),

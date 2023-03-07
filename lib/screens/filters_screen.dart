@@ -148,9 +148,13 @@ class _FiltersScreenState extends State<FiltersScreen> {
                     };
                     widget.saveFilters(selectedFilters);
                   },
+                  splashColor: Colors.red,
+                  elevation: 15,
                   backgroundColor: Theme.of(context).colorScheme.primary,
-                  child: Icon(Icons.save_sharp,
-                      color: Theme.of(context).colorScheme.secondary),
+                  child: Icon(
+                    Icons.save_sharp,
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
                 ),
               )
             ],

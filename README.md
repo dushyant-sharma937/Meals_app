@@ -4,13 +4,9 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is my second project for learning flutter navigations and multiple screens.
+This Meal_app gives you a variety of dishes splitted into categories.
+It will give you the ingredients and recipe of a particular dish according to which category you select.
+It also have a filter section in which you can filter out some dishes according to your preference and also
+have a Favorite button to store some dishes in a different page for a user friendly experience.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
